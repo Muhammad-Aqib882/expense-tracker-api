@@ -1,0 +1,17 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.db
+*.db-shm
+*.db-wal
+
+## Rider / VS Code
+.idea/
+.vscode/
+*.DotSettings.user
+
+## Migrations (optional — remove this line if you want to commit migrations)
+# Migrations/
