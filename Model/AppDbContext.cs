@@ -7,19 +7,22 @@ public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Expense> Expenses => Set<Expense>();
+    public DbSet<Expense>  Expenses   => Set<Expense>();
     public DbSet<Category> Categories => Set<Category>();
+    public DbSet<User>     Users      => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Unique constraint on category name
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
+
         modelBuilder.Entity<Category>()
             .HasIndex(c => c.Name)
             .IsUnique();
 
-        // Seed default categories
         modelBuilder.Entity<Category>().HasData(
             new Category { Id = 1, Name = "Food",          IsDefault = true },
             new Category { Id = 2, Name = "Transport",     IsDefault = true },
