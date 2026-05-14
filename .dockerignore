@@ -1,0 +1,14 @@
+**/.vs
+**/.vscode
+**/.idea
+**/bin
+**/obj
+**/*.user
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/Migrations
+.dockerignore
+.gitignore
+README.md
+docker-compose.yml

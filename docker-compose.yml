@@ -1,0 +1,22 @@
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: expense-tracker-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/expenses.db
+      - Jwt__Key=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - Jwt__Issuer=ExpenseTrackerAPI
+      - Jwt__Audience=ExpenseTrackerUsers
+      - Jwt__ExpiryHours=24
+    volumes:
+      - expense-data:/app/data
+
+volumes:
+  expense-data:
